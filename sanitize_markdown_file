@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# No argument provided
+if [ $# -lt 1 ]; then
+    exit 1
+fi
+
+cp -a $1 before_sanitize_backup.md
+pandoc -f gfm -t gfm --atx-headers --reference-location=block --toc -s -o temp.md $1
+rm -f $1
+cp -a temp.md $1
+rm -f temp.md
+
+exit 0

@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+###################################################################################################
+
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+
+MANUAL_NAME="manual_example"
+MANUAL_DIR=$DIR/$MANUAL_NAME
+
+###################################################################################################
+
+# Generate HTML, ODT and PDF documents from Markdown plain text files
+pandoc -M date="$(date "+%B %e, %Y")" $MANUAL_DIR/*.md -f markdown -s -o $MANUAL_NAME.html
+pandoc -M date="$(date "+%B %e, %Y")" $MANUAL_DIR/*.md -f markdown -s -o $MANUAL_NAME.odt
+pandoc -M date="$(date "+%B %e, %Y")" $MANUAL_DIR/*.md -f markdown -s -o $MANUAL_NAME.pdf
+
+exit 0

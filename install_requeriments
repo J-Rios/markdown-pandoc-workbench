@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+
+###################################################################################################
+
+# Check for root privileges
+if [ "$(id -u)" != "0" ]; then
+    echo "This script must be executed with administration privileges."
+    echo ""
+    exit 1
+fi
+
+###################################################################################################
+
+echo ""
+echo "Installing Markdown-Pandoc Workbench Requeriments..."
+echo ""
+
+# Updating Repositories
+echo "-------------------------------------------------"
+echo " Updating Repositories"
+echo "-------------------------------------------------"
+apt-get update
+echo ""
+
+# Install LaTex
+echo "-------------------------------------------------"
+echo " Installing LaTex packages                       "
+echo " (texlive-latex-base, texlive-latex-extra)       "
+echo "-------------------------------------------------"
+apt-get -y install texlive-latex-base
+if [[ $? != 0 ]]; then
+    echo "Error: Can't install texlive-latex-base package."
+    echo ""
+    exit 1
+fi
+echo ""
+apt-get -y install texlive-latex-extra
+if [[ $? != 0 ]]; then
+    echo "Error: Can't install texlive-latex-extra package."
+    echo ""
+    exit 1
+fi
+echo ""
+
+# Install Pandoc
+echo "-------------------------------------------------"
+echo " Installing pandoc package (pandoc)              "
+echo "-------------------------------------------------"
+apt-get -y install pandoc
+if [[ $? != 0 ]]; then
+    echo "Error: Can't install pandoc package."
+    echo ""
+    exit 1
+fi
+echo ""
+
+echo "Markdown-Pandoc Workbench Requeriments successfully installed."
+echo ""
+
+exit 0
