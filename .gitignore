@@ -2,6 +2,10 @@
 ./**/.vscode/
 __pycache__/
 ./**/__pycache__/
+*.html
+*.tex
+./**/*.html
+./**/*.tex
 *.pyc
 *.pdf
 *.odt

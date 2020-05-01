@@ -3,15 +3,41 @@
 ###################################################################################################
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+DATE="$(date "+%B %e, %Y")"
 
 MANUAL_NAME="manual_example"
-MANUAL_DIR=$DIR/$MANUAL_NAME
+MANUAL_IN_DIR=$DIR/$MANUAL_NAME
+MANUAL_OUT_DIR=$DIR/output/$MANUAL_NAME
 
 ###################################################################################################
 
+echo ""
+mkdir -p $MANUAL_OUT_DIR
+
 # Generate HTML, ODT and PDF documents from Markdown plain text files
-pandoc -M date="$(date "+%B %e, %Y")" $MANUAL_DIR/*.md -f markdown -s -o $MANUAL_NAME.html
-pandoc -M date="$(date "+%B %e, %Y")" $MANUAL_DIR/*.md -f markdown -s -o $MANUAL_NAME.odt
-pandoc -M date="$(date "+%B %e, %Y")" $MANUAL_DIR/*.md -f markdown -s -o $MANUAL_NAME.pdf
+pandoc -M date="${DATE}" $MANUAL_IN_DIR/*.md -f markdown -s -o $MANUAL_OUT_DIR/$MANUAL_NAME.html
+if [[ $? != 0 ]]; then
+    echo "Error: Can't generate manual in HTML format."
+    echo ""
+fi
+pandoc -M date="${DATE}" $MANUAL_IN_DIR/*.md -f markdown -s -o $MANUAL_OUT_DIR/$MANUAL_NAME.odt
+if [[ $? != 0 ]]; then
+    echo "Error: Can't generate manual in ODT format."
+    echo ""
+fi
+pandoc -M date="${DATE}" $MANUAL_IN_DIR/*.md -f markdown -s -o $MANUAL_OUT_DIR/$MANUAL_NAME.tex
+if [[ $? != 0 ]]; then
+    echo "Error: Can't generate manual in TEX format."
+    echo ""
+fi
+pandoc -M date="${DATE}" $MANUAL_OUT_DIR/$MANUAL_NAME.tex -f latex --latex-engine=xelatex \
+    -s -o $MANUAL_OUT_DIR/$MANUAL_NAME.pdf
+if [[ $? != 0 ]]; then
+    echo "Error: Can't generate manual in PDF format."
+    echo ""
+fi
+
+echo "Manual generated: ${MANUAL_OUT_DIR}"
+echo ""
 
 exit 0

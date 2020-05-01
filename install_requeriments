@@ -24,8 +24,8 @@ echo ""
 
 # Install LaTex
 echo "-------------------------------------------------"
-echo " Installing LaTex packages                       "
-echo " (texlive-latex-base, texlive-latex-extra)       "
+echo " Installing LaTex packages (texlive-latex-base,  "
+echo " texlive-latex-extra, texlive-xetex)             "
 echo "-------------------------------------------------"
 apt-get -y install texlive-latex-base
 if [[ $? != 0 ]]; then
@@ -37,6 +37,13 @@ echo ""
 apt-get -y install texlive-latex-extra
 if [[ $? != 0 ]]; then
     echo "Error: Can't install texlive-latex-extra package."
+    echo ""
+    exit 1
+fi
+echo ""
+apt-get -y install texlive-xetex
+if [[ $? != 0 ]]; then
+    echo "Error: Can't install texlive-xetex package."
     echo ""
     exit 1
 fi
