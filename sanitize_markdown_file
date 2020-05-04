@@ -6,7 +6,7 @@ if [ $# -lt 1 ]; then
 fi
 
 cp -a $1 before_sanitize_backup.md
-pandoc -f gfm -t gfm --atx-headers --reference-location=block --toc -s -o temp.md $1
+pandoc -s -o temp.md $1
 rm -f $1
 cp -a temp.md $1
 rm -f temp.md

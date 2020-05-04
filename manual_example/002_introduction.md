@@ -1,5 +1,5 @@
 
-# Introduction {#1}
+# Introduction
 
 Hello World.
 
@@ -21,7 +21,7 @@ Hello World.
 
 ---
 
-## New lines
+## New Lines
 
 To write a new line in the same paragraph just add two spaces at the end of the first line.  
 Like this.
@@ -30,29 +30,36 @@ To write a new line for a new paragraph, just place an empty line between the te
 
 Like this.
 
+To write a new blank line between two paragraphs, use the backslash symbol followed by two spaces.
+
+\  
+
+Like this.
+
 ---
 
-## Italic, Bold and strikethrough
+## Italic, Bold and Strikethrough
 
-This is how to *use italic* text.  
+This is how to *use italic* text.
 This is how to **use bold** text.  
 This is how to ***use both*** at same time.  
 This is how to ~~use strikethrough~~ text.  
 
 ---
 
-## Blockquotes
+## Superscripts and Subscripts
 
-Simple:
+This is how to use superscripts and subscripts:
+
+H~2~O=water  
+2^8^=255.
+
+---
+
+## Blockquotes
 
 > This is a blockquote text  
 > with multiples lines
-
-Nested one:
-
-> And this is a blockquote
->> with nested  
->>> lines also  
 
 ---
 
@@ -110,14 +117,36 @@ This is JSON formated multi-line code:
 
 ## Tables
 
+: Basic Table
+
 | Syntax      | Description | Test Text     |
 | :---        |    :----:   |          ---: |
 | Header      | Title       | Here's this   |
 | Paragraph   | Text        | And more      |
-<br>
+
 Align cells to left by using :---  
 Align cells to center by using :----:  
 Align cell to right by using ---:
+
+\  
+
+: Multiline Table
+
++------------+-------+---------------------------------------------+
+| Date       | ID    | Descripción                                 |
++:==========:+:=====:+:============================================+
+| 2017/10/06 | 1     | First line.                                 |
+|            |       | Second line.                                |
+|            |       | Third line.                                 |
++------------+-------+---------------------------------------------+
+| 2017/10/18 | 2     | Blah blah blah.                             |
++------------+-------+---------------------------------------------+
+|            |       | OK                                          |
++------------+-------+---------------------------------------------+
+
+Align cells to left by using :===  
+Align cells to center by using :====:  
+Align cell to right by using ===:
 
 ---
 
@@ -140,7 +169,7 @@ Second Term
 
 ## Emojis
 
-Emojis can also be used 😀👍  
+Emojis can also be used for html  
 Check: <https://emojipedia.org>
 
 ## Footnotes

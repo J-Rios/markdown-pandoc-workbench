@@ -8,9 +8,11 @@ Basic workbench skelleton for plain text based documentation generation.
 
 - Check [Markdown style guide](https://www.markdownguide.org/cheat-sheet/).
 
-- Recommended vscode plugins for Markdown work: "markdownlint", "Markdown All in One" and "Pandoc Markdown Preview" (this one allows to see Pandoc compatible Markdown, like multi-line tables. It is better to use than builtin vscode preview. Ctrl+Shift+R to Open Pandoc Preview Window).
+- Check [Pandoc Manual](https://pandoc.org/MANUAL.html).
 
-- Use vscode "Open Preview" button to show real time Markdown edition.
+- Recommended vscode plugins for Markdown work: "markdownlint" and "Pandoc Markdown Preview" (this one allows to see Pandoc compatible Markdown, like multi-line tables. It is better to use this than builtin vscode preview. Ctrl+Shift+R to Open Pandoc Preview Window).
+
+- Use vscode "Pandoc Markdown Preview" plugin (Ctrl+Shift+R) to open a real time preview of Markdown edition.
 
 - The Workbench needs some requeriments, like LaTeX to be able to generate PDF files.
 

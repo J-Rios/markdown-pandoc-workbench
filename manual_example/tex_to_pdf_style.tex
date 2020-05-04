@@ -1,0 +1,31 @@
+
+% Separate pages sections from H1 headers in new pages
+\newcommand{\sectionbreak}{\clearpage}
+
+% Remove "Chapter N" Book headers
+\renewcommand\thesection{}
+\renewcommand\thechapter{}
+\renewcommand\chaptername{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Header and Footer Styles
+
+% Include fancy packages
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+% Chapter mark without dot
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+
+% Header style
+\fancyhead{}
+\fancyhead[CE,CO]{}
+\fancyhead[LE, RO]{}
+\fancyhead[LO, RE]{\MakeUppercase{\leftmark}}
+
+% Footer style (numbers at center in eved and odd pages)
+\fancyfoot{}
+\fancyfoot[RE,LO]{}
+\fancyfoot[LE, RO]{}
+\fancyfoot[CE,CO]{\thepage}

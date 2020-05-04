@@ -9,7 +9,7 @@ __pycache__/
 *.pyc
 ./**/*.pyc
 *.html
-*.tex
+./output/**/*.tex
 *.pdf
 *.odt
 *.ott
@@ -48,7 +48,6 @@ __pycache__/
 *.sldx
 *.sldm
 ./**/*.html
-./**/*.tex
 ./**/*.pdf
 ./**/*.odt
 ./**/*.ott
