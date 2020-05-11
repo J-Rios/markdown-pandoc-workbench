@@ -16,11 +16,20 @@ Basic workbench skelleton for plain text based documentation generation.
 
 - The Workbench needs some requeriments, like LaTeX to be able to generate PDF files.
 
-- Run install_requeriments (for debian-ubuntu based system) to automatic installation of requeriments:  
-`sudo ./install_requeriments`
+- Run `install_requeriments` (for debian-ubuntu based system) to automatic installation of requeriments:
 
-- Generate manual in HTML, ODT and PDF formats from Markdown plain text files through "generate_manual" script:  
-`./generate_manual`
+    ```bash
+    sudo ./install_requeriments
+    ```
 
-- Clean-Remove generated manual files through "remove_generated_manual" script:  
-`./remove_generated_manual`
+- Generate manual in HTML, ODT and PDF formats from Markdown plain text files through `generate_manual` script:
+
+    ```bash
+    ./generate_manual manual_example
+    ```
+
+- Clean-Remove generated manual files through `remove_generated_manual` script:
+
+    ```bash
+    ./remove_generated_manual manual_example
+    ```
