@@ -24,6 +24,11 @@ if [ $# -lt 1 ]; then
     exit 1
 fi
 
+# Check and remove directory slash (/) of manual name
+if [[ "${MANUAL_NAME: -1}" == "/" ]]; then
+    MANUAL_NAME=${MANUAL_NAME::-1}
+fi
+
 # Check if Pandoc is installed
 pandoc -v &> /dev/null
 if [[ $? != 0 ]]; then

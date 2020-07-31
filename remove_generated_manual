@@ -20,6 +20,11 @@ if [ $# -lt 1 ]; then
     exit 1
 fi
 
+# Check and remove directory slash (/) of manual name
+if [[ "${MANUAL_NAME: -1}" == "/" ]]; then
+    MANUAL_NAME=${MANUAL_NAME::-1}
+fi
+
 # Remove Generated Manual
 rm -rf $MANUAL_OUT_DIR
 echo "Manual removed: ${MANUAL_OUT_DIR}"
