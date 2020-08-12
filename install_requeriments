@@ -2,11 +2,53 @@
 
 ###################################################################################################
 
+# Constants
+PANDOC_DEB_PKG="https://github.com/jgm/pandoc/releases/download/2.10.1/pandoc-2.10.1-1-amd64.deb"
+
+# Variables
+help=0
+force=0
+
+###################################################################################################
+
 # Check for root privileges
 if [ "$(id -u)" != "0" ]; then
     echo "This script must be executed with administration privileges."
     echo ""
     exit 1
+fi
+
+###############################################################################
+
+# For each argument
+for i in "$@"
+do
+    # Convert it to Lowercases
+    i=`echo "$i" | tr A-Z a-z`
+
+    # Check for expected arguments
+    if [ "$i" == "-h" ] || [ "$i" == "--help" ]; then
+        help=1
+    elif [ "$i" == "-f" ] || [ "$i" == "--force" ]; then
+        force=1
+    else   
+        echo "Ignoring unexpected argument: $i"
+    fi
+done
+
+###################################################################################################
+
+# Show help information
+if [ $help -eq 1 ]; then
+    printf "This script install Pandoc and all requeriments for Markdown Workbench usage.\n"
+    printf "\n"
+    printf "Usage: install_pandoc [-h help] [-f force]\n"
+    printf "\n"
+    printf " -h, --help  : Show this message.\n"
+    printf " -f, --force : Force Pandoc install from released Github .deb package instead "
+    printf "system repositories.\n"
+    printf "\n"
+    exit 0
 fi
 
 ###################################################################################################
@@ -53,11 +95,37 @@ echo ""
 echo "-------------------------------------------------"
 echo " Installing pandoc package (pandoc)              "
 echo "-------------------------------------------------"
-apt-get -y install pandoc
-if [[ $? != 0 ]]; then
-    echo "Error: Can't install pandoc package."
+if [ $force -eq 0 ]; then
+    apt-get -y install pandoc
+    if [[ $? != 0 ]]; then
+        echo "Error: Can't install pandoc package."
+        echo ""
+        exit 1
+    fi
+else
+    apt-get -y install wget
+    if [[ $? != 0 ]]; then
+        echo "Error: Can't install wget package."
+        echo ""
+        exit 1
+    fi
     echo ""
-    exit 1
+    wget $PANDOC_DEB_PKG
+    if [[ $? != 0 ]]; then
+        echo "Error: Can't download Pandoc package from:"
+        echo "${PANDOC_DEB_PKG}"
+        echo ""
+        exit 1
+    fi
+    apt-get -y remove pandoc
+    dpkg -i ./pandoc*.deb
+    if [[ $? != 0 ]]; then
+        echo "Error: Can't install Pandoc debian package."
+        rm -f ./pandoc*.deb
+        echo ""
+        exit 1
+    fi
+    rm -f ./pandoc*.deb
 fi
 echo ""
 
