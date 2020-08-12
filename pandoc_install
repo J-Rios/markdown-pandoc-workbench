@@ -42,7 +42,7 @@ done
 if [ $help -eq 1 ]; then
     printf "This script install Pandoc and all requeriments for Markdown Workbench usage.\n"
     printf "\n"
-    printf "Usage: install_pandoc [-h help] [-f force]\n"
+    printf "Usage: pandoc_install [-h help] [-f force]\n"
     printf "\n"
     printf " -h, --help  : Show this message.\n"
     printf " -f, --force : Force Pandoc install from released Github .deb package instead "

@@ -16,20 +16,20 @@ Basic workbench skelleton for plain text based documentation generation.
 
 - The Workbench needs some requeriments, like LaTeX to be able to generate PDF files.
 
-- Run `install_requeriments` (for debian-ubuntu based system) to automatic installation of requeriments:
+- Run `pandoc_install` (for debian-ubuntu based system) to automatic installation of requeriments:
 
     ```bash
-    sudo ./install_requeriments
+    sudo ./pandoc_install
     ```
 
-- Generate manual in HTML, ODT and PDF formats from Markdown plain text files through `generate_manual` script:
+- Generate document in HTML, ODT and PDF formats from Markdown plain text files through `pandoc_run` script:
 
     ```bash
-    ./generate_manual manual_example
+    ./pandoc_run mydoc_example
     ```
 
-- Clean-Remove generated manual files through `remove_generated_manual` script:
+- Clean-Remove generated document files through `pandoc_rm` script:
 
     ```bash
-    ./remove_generated_manual manual_example
+    ./pandoc_rm mydoc_example
     ```
