@@ -3,7 +3,7 @@
 ###################################################################################################
 
 # Constants
-PANDOC_DEB_PKG="https://github.com/jgm/pandoc/releases/download/2.10.1/pandoc-2.10.1-1-amd64.deb"
+PANDOC_DEB_PKG="https://github.com/jgm/pandoc/releases/download/2.16.2/pandoc-2.16.2-1-amd64.deb"
 
 # Variables
 help=0
@@ -86,6 +86,19 @@ echo ""
 apt-get -y install texlive-xetex
 if [[ $? != 0 ]]; then
     echo "Error: Can't install texlive-xetex package."
+    echo ""
+    exit 1
+fi
+echo ""
+
+# Install SVG to PDF converter
+echo "-------------------------------------------------"
+echo " Installing SVG to PDF converter package         "
+echo " (librsvg2-bin)                                  "
+echo "-------------------------------------------------"
+apt-get -y install librsvg2-bin
+if [[ $? != 0 ]]; then
+    echo "Error: Can't install librsvg2-bin package."
     echo ""
     exit 1
 fi
