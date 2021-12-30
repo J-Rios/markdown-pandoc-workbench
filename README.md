@@ -1,8 +1,31 @@
 # Markdown Pandoc Workbench
 
-Basic workbench skelleton for plain text based documentation generation.
+Markdown Pandoc Workbench for plain text based documentation generation.
 
 ---
+
+## Requeriments
+
+Give execution permission and run `pandoc_install` script (for debian-ubuntu based system) to automatic installation of all requeriments:
+
+```bash
+chmod +x pandoc_install pandoc_run pandoc_rm
+sudo ./pandoc_install
+```
+
+## Usage
+
+To generate documents in HTML, ODT and PDF formats from Markdown plain text files, use the `pandoc_run` script:
+
+```bash
+./pandoc_run mydoc_example
+```
+
+To clean-remove generated documents files, use the `pandoc_rm` script:
+
+```bash
+./pandoc_rm mydoc_example
+```
 
 ## Notes
 
@@ -21,21 +44,3 @@ Basic workbench skelleton for plain text based documentation generation.
 - Use vscode "Pandoc Markdown Preview" plugin (Ctrl+Shift+R) to open a real time preview of Markdown edition.
 
 - The Workbench needs some requeriments, like LaTeX to be able to generate PDF files.
-
-- Run `pandoc_install` (for debian-ubuntu based system) to automatic installation of requeriments:
-
-    ```bash
-    sudo ./pandoc_install
-    ```
-
-- Generate document in HTML, ODT and PDF formats from Markdown plain text files through `pandoc_run` script:
-
-    ```bash
-    ./pandoc_run mydoc_example
-    ```
-
-- Clean-Remove generated document files through `pandoc_rm` script:
-
-    ```bash
-    ./pandoc_rm mydoc_example
-    ```
