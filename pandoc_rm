@@ -5,7 +5,7 @@
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 
 DOC_NAME=$1
-DOC_OUT_DIR=$DIR/export/$DOC_NAME
+DOC_OUT_DIR=$DIR/release/$DOC_NAME
 
 ###################################################################################################
 
