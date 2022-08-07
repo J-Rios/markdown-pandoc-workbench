@@ -7,9 +7,9 @@ PANDOC_DEB_PKG="https://github.com/jgm/pandoc/releases/download/2.16.2/pandoc-2.
 
 # Variables
 help=0
-force=0
+apt=0
 
-###############################################################################
+###################################################################################################
 
 # For each argument
 for i in "$@"
@@ -20,9 +20,9 @@ do
     # Check for expected arguments
     if [ "$i" == "-h" ] || [ "$i" == "--help" ]; then
         help=1
-    elif [ "$i" == "-f" ] || [ "$i" == "--force" ]; then
-        force=1
-    else   
+    elif [ "$i" == "-a" ] || [ "$i" == "--apt" ]; then
+        apt=1
+    else
         echo "Ignoring unexpected argument: $i"
     fi
 done
@@ -33,11 +33,10 @@ done
 if [ $help -eq 1 ]; then
     printf "This script install Pandoc and all requeriments for Markdown Workbench usage.\n"
     printf "\n"
-    printf "Usage: pandoc_install [-h help] [-f force]\n"
+    printf "Usage: pandoc_install [-h --help] [-a --apt]\n"
     printf "\n"
     printf " -h, --help  : Show this message.\n"
-    printf " -f, --force : Force Pandoc install from released Github .deb package instead "
-    printf "system repositories.\n"
+    printf " -f, --apt : Use APT for Pandoc install instead installing it from Github.\n"
     printf "\n"
     exit 0
 fi
@@ -108,7 +107,7 @@ echo ""
 echo "-------------------------------------------------"
 echo " Installing pandoc package (pandoc)              "
 echo "-------------------------------------------------"
-if [ $force -eq 0 ]; then
+if [ $apt -eq 1 ]; then
     apt-get -y install pandoc
     if [[ $? != 0 ]]; then
         echo "Error: Can't install pandoc package."
