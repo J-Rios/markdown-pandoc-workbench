@@ -3,7 +3,7 @@
 ###################################################################################################
 
 # Constants
-PANDOC_DEB_PKG="https://github.com/jgm/pandoc/releases/download/2.16.2/pandoc-2.16.2-1-amd64.deb"
+PANDOC_DEB_PKG="https://github.com/jgm/pandoc/releases/download/2.19/pandoc-2.19-1-amd64.deb"
 
 # Variables
 help=0
