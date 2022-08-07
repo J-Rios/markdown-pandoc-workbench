@@ -43,7 +43,8 @@ mkdir -p $DOC_OUT_DIR
 
 # Generate HTML, ODT and PDF documents from Markdown plain text files
 echo "Creating HTML document..."
-pandoc --self-contained -M date="${DATE}" $DOC_IN_DIR/*.md -f markdown -s -o $DOC_OUT_DIR/$DOC_NAME.html
+pandoc --embed-resources --standalone -M date="${DATE}" $DOC_IN_DIR/*.md -f markdown \
+        -s -o $DOC_OUT_DIR/$DOC_NAME.html
 if [[ $? != 0 ]]; then
     ((error=error+1))
     echo "Error: Can't generate document in HTML format."
@@ -64,8 +65,11 @@ echo "Creating PDF document..."
 #    echo ""
 #fi
 #echo "Creating PDF book..."
-#pandoc -H "${DOC_IN_DIR}/tex_to_pdf_style.tex" --top-level-division=chapter -M date="${DATE}" $DOC_IN_DIR/*.md -f markdown -s -o "${DOC_OUT_DIR}/${DOC_NAME}_book.pdf"
-pandoc -H "${DOC_IN_DIR}/tex_to_pdf_style.tex" --top-level-division=chapter --columns=100 -M date="${DATE}" $DOC_IN_DIR/*.md -f markdown -s -o "${DOC_OUT_DIR}/${DOC_NAME}.pdf"
+#pandoc -H "${DOC_IN_DIR}/tex_to_pdf_style.tex" --top-level-division=chapter -M date="${DATE}" \
+#       $DOC_IN_DIR/*.md -f markdown -s -o "${DOC_OUT_DIR}/${DOC_NAME}_book.pdf"
+pandoc -H "${DOC_IN_DIR}/tex_to_pdf_style.tex" --top-level-division=chapter \
+        --columns=100 -M date="${DATE}" $DOC_IN_DIR/*.md -f markdown -s \
+        -o "${DOC_OUT_DIR}/${DOC_NAME}.pdf"
 if [[ $? != 0 ]]; then
     ((error=error+1))
     echo "Error: Can't generate book in PDF format."
