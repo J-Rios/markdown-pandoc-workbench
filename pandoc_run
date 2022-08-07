@@ -1,15 +1,16 @@
 #!/usr/bin/env bash
 
-###################################################################################################
+###############################################################################
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
-DATE="$(date "+%B %e, %Y")"
+DATE="$(date '+%Y_%m_%d')"
+DOC_DATE="$(date "+%B %e, %Y")"
 
 DOC_NAME=$1
 DOC_IN_DIR=$DIR/$DOC_NAME
-DOC_OUT_DIR=$DIR/release/$DOC_NAME
+DOC_OUT_DIR=$DIR/export/$DATE/$DOC_NAME
 
-###################################################################################################
+###############################################################################
 
 error=0
 
@@ -19,7 +20,7 @@ echo ""
 if [ $# -lt 1 ]; then
     echo "You need to provide the document name to be generated."
     echo "  Example:"
-    echo "    pandoc_run document_dir_name"
+    echo "    pandoc_export document_dir_name"
     echo ""
     exit 1
 fi
@@ -43,32 +44,23 @@ mkdir -p $DOC_OUT_DIR
 
 # Generate HTML, ODT and PDF documents from Markdown plain text files
 echo "Creating HTML document..."
-pandoc --embed-resources --standalone -M date="${DATE}" $DOC_IN_DIR/*.md -f markdown \
-        -s -o $DOC_OUT_DIR/$DOC_NAME.html
+pandoc --embed-resources --standalone -M date="${DOC_DATE}" $DOC_IN_DIR/*.md -f markdown -s \
+        -o $DOC_OUT_DIR/$DOC_NAME.html
 if [[ $? != 0 ]]; then
     ((error=error+1))
     echo "Error: Can't generate document in HTML format."
     echo ""
 fi
 echo "Creating ODT document..."
-pandoc -M date="${DATE}" $DOC_IN_DIR/*.md -f markdown -s -o $DOC_OUT_DIR/$DOC_NAME.odt
+pandoc -M date="${DOC_DATE}" $DOC_IN_DIR/*.md -f markdown -s -o $DOC_OUT_DIR/$DOC_NAME.odt
 if [[ $? != 0 ]]; then
     ((error=error+1))
     echo "Error: Can't generate document in ODT format."
     echo ""
 fi
 echo "Creating PDF document..."
-#pandoc -M date="${DATE}" $DOC_IN_DIR/*.md -f markdown -s -o $DOC_OUT_DIR/$DOC_NAME.pdf
-#if [[ $? != 0 ]]; then
-#    ((error=error+1))
-#    echo "Error: Can't generate document in PDF format."
-#    echo ""
-#fi
-#echo "Creating PDF book..."
-#pandoc -H "${DOC_IN_DIR}/tex_to_pdf_style.tex" --top-level-division=chapter -M date="${DATE}" \
-#       $DOC_IN_DIR/*.md -f markdown -s -o "${DOC_OUT_DIR}/${DOC_NAME}_book.pdf"
 pandoc -H "${DOC_IN_DIR}/tex_to_pdf_style.tex" --top-level-division=chapter \
-        --columns=100 -M date="${DATE}" $DOC_IN_DIR/*.md -f markdown -s \
+        --columns=100 -M date="${DOC_DATE}" $DOC_IN_DIR/*.md -f markdown -s \
         -o "${DOC_OUT_DIR}/${DOC_NAME}.pdf"
 if [[ $? != 0 ]]; then
     ((error=error+1))
