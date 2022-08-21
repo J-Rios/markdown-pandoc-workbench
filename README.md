@@ -4,9 +4,9 @@ Markdown Pandoc Workbench for plain text based documentation generation.
 
 ---
 
-## Requeriments
+## Requirements
 
-Give execution permission and run `pandoc_install` script (for debian-ubuntu based system) to automatic installation of all requeriments:
+Give execution permission and run `pandoc_install` script (for debian-ubuntu based system) to automatic installation of all requirements:
 
 ```bash
 chmod +x pandoc_install pandoc_run
@@ -31,10 +31,10 @@ To generate documents in HTML, ODT and PDF formats from Markdown plain text file
 
     - **markdownlint:** To check for correct Markdown style.
 
-    - **Pandoc Markdown Preview:** Allows to see Pandoc compatible Markdown, like multi-line tables. It is better to use this than builtin vscode preview due there is some things that are not supported in builtin previes (i.e. multi-line tables). Ctrl+Shift+R to Open Pandoc Preview Window.
+    - **Pandoc Markdown Preview:** Allows to see Pandoc compatible Markdown, like multi-line tables. It is better to use this than builtin vscode preview due there is some things that are not supported in builtin previews (i.e. multi-line tables). Ctrl+Shift+R to Open Pandoc Preview Window.
 
     - **Language - Code Spell Checker:** To check for correct english/spanish/etc. text and avoid misspelling.
 
 - Use vscode "Pandoc Markdown Preview" plugin (Ctrl+Shift+R) to open a real time preview of Markdown edition.
 
-- The Workbench needs some requeriments, like LaTeX to be able to generate PDF files.
+- The Workbench needs some requirements, like LaTeX to be able to generate PDF files.
